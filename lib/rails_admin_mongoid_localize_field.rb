@@ -29,8 +29,28 @@ module RegisterInstances
       localized? ? [method_name, translations_field] : [method_name]
     end
 
-  end
+    register_instance_option :pretty_value do
+      ret = nil
+      unless localized?
+        ret ||= value
+      else
+        ret = []
 
+        #if data is not localized yet
+        unless value.is_a?(Hash)
+          _value = {}
+          _value[I18n.locale] = value
+          value = _value
+        end
+
+        value.each_pair do |loc, val|
+          ret << "#{loc}: #{val}"
+        end
+        ret = ret.join("<br />").html_safe
+      end
+      ret
+    end
+  end
 end
 
 module RailsAdmin
@@ -44,7 +64,6 @@ module RailsAdmin
           register_instance_option :partial do
             localized? ? :form_textml : :form_text
           end
-
         end
 
         RailsAdmin::Config::Fields::Types::CKEditor.class_eval do

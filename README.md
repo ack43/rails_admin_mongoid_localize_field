@@ -6,11 +6,15 @@ Adds to [RailsAdmin](https://github.com/sferik/rails_admin) support for [mongoid
 
 In your `Gemfile`add the following dependencies:
 
-    gem "rails_admin_mongoid_localize_field", "~> 0.1.2"
+    gem "rails_admin_mongoid_localize_field", github: 'ack43/rails_admin_mongoid_localize_field'
 
 Run:
 
     $ bundle install
+
+## Diff between this and https://github.com/sudosu/rails_admin_mongoid_localize_field
+
+  Added pretty_value for list of items.
 
 ## Usage
 
