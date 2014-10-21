@@ -31,23 +31,23 @@ module RegisterInstances
 
     register_instance_option :pretty_value do
       ret = nil
+
       unless localized?
         ret ||= value
+
       else
         ret = []
 
-        #if data is not localized yet
-        unless value.is_a?(Hash)
-          _value = {}
-          _value[I18n.locale] = value
-          value = _value
-        end
-
-        value.each_pair do |loc, val|
-          ret << "#{loc}: #{val}"
+        begin
+          value.each_pair do |loc, val|
+            ret << "#{loc}: #{val}"
+          end
+        rescue
+          ret = []
         end
         ret = ret.join("<br />").html_safe
       end
+
       ret
     end
   end

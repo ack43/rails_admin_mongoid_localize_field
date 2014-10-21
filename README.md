@@ -12,9 +12,11 @@ Run:
 
     $ bundle install
 
-## Diff between this and https://github.com/sudosu/rails_admin_mongoid_localize_field
+## Diff
 
-  Added pretty_value for list of items.
+  ...between this and https://github.com/sudosu/rails_admin_mongoid_localize_field :
+
+      Added default :pretty_value
 
 ## Usage
 
